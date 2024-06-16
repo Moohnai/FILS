@@ -33,17 +33,17 @@ parent_path = os.path.dirname(current_path)
 import sys
 sys.path.append(parent_path)
 
-from avion.data.transforms import Permute, TemporalCrop, SpatialCrop
-from avion.data.classification_dataset import VideoClsDataset_FRIL, multiple_samples_collate
-from avion.data.clip_dataset import VideoClassyDataset
-import avion.models.model_FRIL as model_FRIL
-from avion.optim.layer_decay import LayerDecayValueAssigner
-from avion.optim.lion import Lion
-from avion.optim.schedulers import cosine_scheduler
-import avion.utils.distributed as dist_utils
-from avion.utils.meters import AverageMeter, ProgressMeter
-from avion.utils.misc import check_loss_nan, interpolate_pos_embed, generate_label_map, acc_mappping
-from avion.utils.evaluation_ek100cls import get_marginal_indexes, get_mean_accuracy, marginalize
+from FILS.data.transforms import Permute, TemporalCrop, SpatialCrop
+from FILS.data.classification_dataset import VideoClsDataset_FRIL, multiple_samples_collate
+from FILS.data.clip_dataset import VideoClassyDataset
+import FILS.models.model_FRIL as model_FRIL
+from FILS.optim.layer_decay import LayerDecayValueAssigner
+from FILS.optim.lion import Lion
+from FILS.optim.schedulers import cosine_scheduler
+import FILS.utils.distributed as dist_utils
+from FILS.utils.meters import AverageMeter, ProgressMeter
+from FILS.utils.misc import check_loss_nan, interpolate_pos_embed, generate_label_map, acc_mappping
+from FILS.utils.evaluation_ek100cls import get_marginal_indexes, get_mean_accuracy, marginalize
 
 
 def get_args_parser():
@@ -128,7 +128,7 @@ def get_args_parser():
     parser.add_argument('--drop-path-rate', default=0.1, type=float)
     parser.add_argument('--resume', default='', type=str, help='path to resume from')
     # fine-tune
-    parser.add_argument('--finetune', default='/home/mona/FRIL/avion/results/pretrain_FRILS/pretrain_FR_CLIP_vidcaption_vifi_all_SSV2_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=1__ssvli_iter=1_800_epochs_totalbatch=240_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00780.pt', help='fine-tune path')
+    parser.add_argument('--finetune', default='/home/mona/FRIL/FILS/results/pretrain_FRILS/pretrain_FR_CLIP_vidcaption_vifi_all_SSV2_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=1__ssvli_iter=1_800_epochs_totalbatch=240_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00780.pt', help='fine-tune path')
     # parser.add_argument('--finetune', default='', help='fine-tune path')
     parser.add_argument('--model-key', default='model|module|state_dict', type=str)
     # model ema
@@ -1008,7 +1008,7 @@ def test(test_loader, model, args, num_videos):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser('AVION training and evaluation', parents=[get_args_parser()])
+    parser = argparse.ArgumentParser('FILS training and evaluation', parents=[get_args_parser()])
     args = parser.parse_args()
     os.makedirs(args.output_dir, exist_ok=True)
     main(args)

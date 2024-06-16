@@ -15,32 +15,32 @@ import torchvision.transforms._transforms_video as transforms_video
 import torchvision
 from timm.data.loader import MultiEpochsDataLoader
 
-# add avion to python path
+# add FILS to python path
 import sys
-sys.path.append("/home/mona/avion/")
+sys.path.append("/home/mona/FILS/")
 
-from avion.data.clip_dataset import get_downstream_dataset
-from avion.data.kinetics_dataset import KineticsDataset
-from avion.data.transforms import GroupMultiScaleCrop, Permute, TubeMaskingGeneratorGPU
-import FRIL.avion.avion.models.model_FRIL as model_FRIL
-from avion.optim.lion import Lion
-from avion.optim.schedulers import cosine_scheduler
-import avion.utils.distributed as dist_utils
-from avion.utils.meters import AverageMeter, ProgressMeter
-from avion.utils.misc import check_loss_nan, generate_label_map
+from FILS.data.clip_dataset import get_downstream_dataset
+from FILS.data.kinetics_dataset import KineticsDataset
+from FILS.data.transforms import GroupMultiScaleCrop, Permute, TubeMaskingGeneratorGPU
+import FRIL.FILS.FILS.models.model_FRIL as model_FRIL
+from FILS.optim.lion import Lion
+from FILS.optim.schedulers import cosine_scheduler
+import FILS.utils.distributed as dist_utils
+from FILS.utils.meters import AverageMeter, ProgressMeter
+from FILS.utils.misc import check_loss_nan, generate_label_map
 
 
 def get_args_parser():
     parser = argparse.ArgumentParser(description='VideoMAE pretrain', add_help=False)
     parser.add_argument('--dataset', default='ek100_cls', type=str, choices=['ek100_mir'])
     parser.add_argument('--root',
-                        default='/home/mona/avion/datasets/EK100/EK100_320p_15sec_30fps_libx264',
+                        default='/home/mona/FILS/datasets/EK100/EK100_320p_15sec_30fps_libx264',
                         type=str, help='path to train dataset root')
     parser.add_argument('--train-metadata', type=str,
-                        default='/home/mona/avion/datasets/EK100/epic-kitchens-100-annotations/EPIC_100_train.csv')
+                        default='/home/mona/FILS/datasets/EK100/epic-kitchens-100-annotations/EPIC_100_train.csv')
     parser.add_argument('--val-metadata', type=str,
-                        default='/home/mona/avion/datasets/EK100/epic-kitchens-100-annotations/EPIC_100_validation.csv')
-    parser.add_argument('--output-dir', default='/home/mona/avion/results/', type=str, help='output dir')
+                        default='/home/mona/FILS/datasets/EK100/epic-kitchens-100-annotations/EPIC_100_validation.csv')
+    parser.add_argument('--output-dir', default='/home/mona/FILS/results/', type=str, help='output dir')
     parser.add_argument('--input-size', default=224, type=int, help='input frame size')
     parser.add_argument('--clip-length', default=16, type=int, help='clip length')
     parser.add_argument('--num-clips', default=1, type=int, help='number of clips for testing')
@@ -458,7 +458,7 @@ def train(train_loader, normalize, model, criterion, optimizer, scaler, epoch, l
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser('AVION training and evaluation', parents=[get_args_parser()])
+    parser = argparse.ArgumentParser('FILS training and evaluation', parents=[get_args_parser()])
     args = parser.parse_args()
     os.makedirs(args.output_dir, exist_ok=True)
     main(args)

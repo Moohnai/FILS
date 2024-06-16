@@ -16,6 +16,6 @@ for i in range(len(epic_captions_train)):
     video = epic_captions_train['video'][i].split("/")[-1].split(".")[-2]
     video_text_dict[video] = train_caption_embed[i].cpu()
 
-torch.save(video_text_dict, '/home/mona/FRIL/avion/datasets/EK100/epic_embedded_mix_captions_train_dict.pt')
+torch.save(video_text_dict, '/home/mona/FRIL/FILS/datasets/EK100/epic_embedded_mix_captions_train_dict.pt')
 
 

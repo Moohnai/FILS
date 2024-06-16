@@ -1,6 +1,6 @@
 import torch
 
-import avion.utils.distributed as dist_utils
+import FILS.utils.distributed as dist_utils
 
 
 class AverageMeter(object):

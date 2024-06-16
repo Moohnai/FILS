@@ -22,21 +22,21 @@ from timm.data.mixup import Mixup
 from timm.loss import LabelSmoothingCrossEntropy, SoftTargetCrossEntropy
 from timm.utils import accuracy
 
-from avion.data.clip_dataset import get_downstream_dataset
-from avion.data.tokenizer import tokenize
-from avion.data.transforms import Permute
+from FILS.data.clip_dataset import get_downstream_dataset
+from FILS.data.tokenizer import tokenize
+from FILS.data.transforms import Permute
 
-import avion.models.model_clip as model_clip
-from avion.models.utils import inflate_positional_embeds
-from avion.optim.schedulers import cosine_scheduler
-import avion.utils.distributed as dist_utils
-from avion.utils.evaluation_ek100cls import get_marginal_indexes, get_mean_accuracy, marginalize
-from avion.utils.meters import AverageMeter, ProgressMeter
-from avion.utils.misc import check_loss_nan, generate_label_map
+import FILS.models.model_clip as model_clip
+from FILS.models.utils import inflate_positional_embeds
+from FILS.optim.schedulers import cosine_scheduler
+import FILS.utils.distributed as dist_utils
+from FILS.utils.evaluation_ek100cls import get_marginal_indexes, get_mean_accuracy, marginalize
+from FILS.utils.meters import AverageMeter, ProgressMeter
+from FILS.utils.misc import check_loss_nan, generate_label_map
 
 
 def get_args_parser():
-    parser = argparse.ArgumentParser(description='AVION finetune ek100 cls', add_help=False)
+    parser = argparse.ArgumentParser(description='FILS finetune ek100 cls', add_help=False)
     parser.add_argument('--dataset', default='ek100_cls', type=str, choices=['ek100_mir'])
     parser.add_argument('--root', default='datasets/EK100/EK100_256p_15sec/', type=str, help='path to train dataset root')
     parser.add_argument('--train-metadata', type=str,

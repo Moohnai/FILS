@@ -11,9 +11,9 @@ import torch
 from torch.utils.data._utils.collate import default_collate
 import torchvision
 
-from avion.data.random_erasing import RandomErasing
-from avion.data.transforms import Permute, AdaptiveTemporalCrop, SpatialCrop
-from avion.data.clip_dataset import get_frame_ids, get_video_reader
+from FILS.data.random_erasing import RandomErasing
+from FILS.data.transforms import Permute, AdaptiveTemporalCrop, SpatialCrop
+from FILS.data.clip_dataset import get_frame_ids, get_video_reader
 
 def datetime2sec(str):
     hh, mm, ss = str.split(':')

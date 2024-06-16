@@ -14,22 +14,22 @@ import torch.nn.functional as F
 from torch.distributed.optim import ZeroRedundancyOptimizer
 import torchvision
 import torchvision.transforms._transforms_video as transforms_video
-from avion.data.clip_dataset import VideoCaptionDatasetCLIP
-from avion.data.tokenizer import tokenize
-from avion.data.transforms import Permute
+from FILS.data.clip_dataset import VideoCaptionDatasetCLIP
+from FILS.data.tokenizer import tokenize
+from FILS.data.transforms import Permute
 
-from avion.losses.losses import ClipLoss
-import avion.models.model_clip as model_clip
-from avion.optim.schedulers import cosine_scheduler
-import avion.utils.distributed as dist_utils
-from avion.utils.evaluation_ek100mir import get_mAP, get_nDCG
-from avion.utils.meters import AverageMeter, ProgressMeter
-from avion.utils.misc import check_loss_nan
+from FILS.losses.losses import ClipLoss
+import FILS.models.model_clip as model_clip
+from FILS.optim.schedulers import cosine_scheduler
+import FILS.utils.distributed as dist_utils
+from FILS.utils.evaluation_ek100mir import get_mAP, get_nDCG
+from FILS.utils.meters import AverageMeter, ProgressMeter
+from FILS.utils.misc import check_loss_nan
 
 
 
 def get_args_parser():
-    parser = argparse.ArgumentParser(description='AVION pretrain', add_help=False)
+    parser = argparse.ArgumentParser(description='FILS pretrain', add_help=False)
     parser.add_argument('--dataset', default='ego4d', type=str, choices=['ego4d'])
     parser.add_argument('--root', default='datasets/Ego4D/videos_320px_15sec/', type=str, help='path to train dataset root')
     parser.add_argument('--root-val', default='datasets/EK100/EK100_320p_15sec/', type=str, help='path to val dataset root')

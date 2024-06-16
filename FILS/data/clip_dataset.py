@@ -9,7 +9,7 @@ import pandas as pd
 import torch
 import orjson
 from torchvision import tv_tensors
-from avion.data.kinetics_dataset import KineticsDataset_FRIL
+from FILS.data.kinetics_dataset import KineticsDataset_FRIL
 
 import decord
 

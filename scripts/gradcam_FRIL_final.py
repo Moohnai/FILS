@@ -38,12 +38,12 @@ parent_path = os.path.dirname(current_path)
 import sys
 sys.path.append(parent_path)
 
-from avion.data.classification_dataset import VideoClsDataset_FRIL
-from avion.data.transforms import Permute, TemporalCrop, SpatialCrop, AdaptiveTemporalCrop, Permute_BB
-from avion.data.kinetics_dataset import KineticsDataset
-from avion.data.clip_dataset import VideoClassyDataset, VideoCaptionDatasetCLIP
-import avion.models.model_FRIL as model_FRIL
-from avion.utils.misc import generate_label_map
+from FILS.data.classification_dataset import VideoClsDataset_FRIL
+from FILS.data.transforms import Permute, TemporalCrop, SpatialCrop, AdaptiveTemporalCrop, Permute_BB
+from FILS.data.kinetics_dataset import KineticsDataset
+from FILS.data.clip_dataset import VideoClassyDataset, VideoCaptionDatasetCLIP
+import FILS.models.model_FRIL as model_FRIL
+from FILS.utils.misc import generate_label_map
 
 
 def get_args():
@@ -426,7 +426,7 @@ if __name__ == '__main__':
             use_fast_conv1=True,
             use_flash_attn=True,
             pretrain_zoo="frils",#args.pretrain_zoo,
-            pretrain_path='/home/mona/FRIL/avion/results/pretrain_FRILS/pretrain_FR_CLIP_vidcaption_vifi_full_all_EK_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=1__ssvli_iter=1_800_epochs_totalbatch=240_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00800.pt',
+            pretrain_path='/home/mona/FRIL/FILS/results/pretrain_FRILS/pretrain_FR_CLIP_vidcaption_vifi_full_all_EK_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=1__ssvli_iter=1_800_epochs_totalbatch=240_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00800.pt',
             text_pretrain_path=os.path.join(parent_path, 'results/vifi_clip_10_epochs_k400_full_finetuned.pth'),
         ).to(device)
 
@@ -439,7 +439,7 @@ if __name__ == '__main__':
             use_fast_conv1=True,
             use_flash_attn=True,
             pretrain_zoo="frils",#args.pretrain_zoo,
-            pretrain_path='/home/mona/FRIL/avion/results/pretrain_FRILS/pretrain_FR_CLIP_vidcaption_vifi_full_all_EK_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=1__ssvli_iter=1_800_epochs_totalbatch=240_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00800.pt',
+            pretrain_path='/home/mona/FRIL/FILS/results/pretrain_FRILS/pretrain_FR_CLIP_vidcaption_vifi_full_all_EK_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=1__ssvli_iter=1_800_epochs_totalbatch=240_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00800.pt',
             text_pretrain_path=os.path.join(parent_path, 'results/vifi_clip_10_epochs_k400_full_finetuned.pth'),
         ).to(device)
 
@@ -452,14 +452,14 @@ if __name__ == '__main__':
             use_fast_conv1=True,
             use_flash_attn=True,
             pretrain_zoo="frils",#args.pretrain_zoo,
-            pretrain_path='/home/mona/FRIL/avion/results/pretrain_FRILS/pretrain_FR_CLIP_vidcaption_vifi_full_all_EK_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=1__ssvli_iter=1_800_epochs_totalbatch=240_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00800.pt',
+            pretrain_path='/home/mona/FRIL/FILS/results/pretrain_FRILS/pretrain_FR_CLIP_vidcaption_vifi_full_all_EK_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=1__ssvli_iter=1_800_epochs_totalbatch=240_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00800.pt',
             text_pretrain_path=os.path.join(parent_path, 'results/vifi_clip_10_epochs_k400_full_finetuned.pth'),
         ).to(device)
 
         # load weights
-        load_model(model_FR_CLIP, '/home/mona/FRIL/avion/results/charades/Finetuning_FR_CLIP_vidcaption_vifi_all_Charades/checkpoint_best.pt')
-        # load_model(model_FR, '/home/mona/FRIL/avion/results/finetune_FRILS/Finetune_FR_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
-        # load_model(model_MSE, '/home/mona/FRIL/avion/results/finetune_FRILS/Finetune_MSE_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
+        load_model(model_FR_CLIP, '/home/mona/FRIL/FILS/results/charades/Finetuning_FR_CLIP_vidcaption_vifi_all_Charades/checkpoint_best.pt')
+        # load_model(model_FR, '/home/mona/FRIL/FILS/results/finetune_FRILS/Finetune_FR_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
+        # load_model(model_MSE, '/home/mona/FRIL/FILS/results/finetune_FRILS/Finetune_MSE_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
 
     else:
 
@@ -503,9 +503,9 @@ if __name__ == '__main__':
         ).to(device)
 
         # load weights
-        load_model(model_FR_CLIP, '/home/mona/FRIL/avion/results/finetune_FRILS/Finetune_FR_CLIP_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
-        load_model(model_FR, '/home/mona/FRIL/avion/results/finetune_FRILS/Finetune_FR_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
-        load_model(model_MSE, '/home/mona/FRIL/avion/results/finetune_FRILS/Finetune_MSE_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
+        load_model(model_FR_CLIP, '/home/mona/FRIL/FILS/results/finetune_FRILS/Finetune_FR_CLIP_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
+        load_model(model_FR, '/home/mona/FRIL/FILS/results/finetune_FRILS/Finetune_FR_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
+        load_model(model_MSE, '/home/mona/FRIL/FILS/results/finetune_FRILS/Finetune_MSE_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
     
     
     # set the models to evaluation mode

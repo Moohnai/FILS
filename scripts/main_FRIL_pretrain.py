@@ -29,17 +29,17 @@ parent_path = os.path.dirname(current_path)
 import sys
 sys.path.append(parent_path)
 
-from avion.data.clip_dataset import get_pretrain_dataset_FRIL
-from avion.data.kinetics_dataset import KineticsDataset
+from FILS.data.clip_dataset import get_pretrain_dataset_FRIL
+from FILS.data.kinetics_dataset import KineticsDataset
 from torchvision.transforms import v2
-from avion.data.transforms import GroupMultiScaleCrop, Permute, TubeMaskingGeneratorGPU, Permute_BB, TubeMaskingGeneratorCross
-import avion.models.model_FRIL as model_FRIL
-from avion.optim.lion import Lion
-from avion.optim.schedulers import cosine_scheduler, cyclic_decay_cosine_scheduler
-from avion.losses.losses import ClipLoss, Feature_Reconstruction_Loss
-import avion.utils.distributed as dist_utils
-from avion.utils.meters import AverageMeter, ProgressMeter
-from avion.utils.misc import check_loss_nan, generate_label_map, get_grad_norm_
+from FILS.data.transforms import GroupMultiScaleCrop, Permute, TubeMaskingGeneratorGPU, Permute_BB, TubeMaskingGeneratorCross
+import FILS.models.model_FRIL as model_FRIL
+from FILS.optim.lion import Lion
+from FILS.optim.schedulers import cosine_scheduler, cyclic_decay_cosine_scheduler
+from FILS.losses.losses import ClipLoss, Feature_Reconstruction_Loss
+import FILS.utils.distributed as dist_utils
+from FILS.utils.meters import AverageMeter, ProgressMeter
+from FILS.utils.misc import check_loss_nan, generate_label_map, get_grad_norm_
 
 
 def get_args_parser():
@@ -732,7 +732,7 @@ def train(
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser('AVION training and evaluation', parents=[get_args_parser()])
+    parser = argparse.ArgumentParser('FILS training and evaluation', parents=[get_args_parser()])
     args = parser.parse_args()
     os.makedirs(args.output_dir, exist_ok=True)
     main(args)

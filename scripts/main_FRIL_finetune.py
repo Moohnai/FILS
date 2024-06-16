@@ -33,18 +33,18 @@ parent_path = os.path.dirname(current_path)
 import sys
 sys.path.append(parent_path)
 
-from avion.data.transforms import Permute, TemporalCrop, SpatialCrop, AdaptiveTemporalCrop
-from avion.data.classification_dataset import VideoClsDataset_FRIL, multiple_samples_collate
-from avion.data.clip_dataset import VideoClassyDataset
-from avion.data.kinetics_dataset import KineticsDataset
-import avion.models.model_FRIL as model_FRIL
-from avion.optim.layer_decay import LayerDecayValueAssigner
-from avion.optim.lion import Lion
-from avion.optim.schedulers import cosine_scheduler
-import avion.utils.distributed as dist_utils
-from avion.utils.meters import AverageMeter, ProgressMeter
-from avion.utils.misc import check_loss_nan, interpolate_pos_embed, generate_label_map
-from avion.utils.evaluation_ek100cls import get_marginal_indexes, get_mean_accuracy, marginalize
+from FILS.data.transforms import Permute, TemporalCrop, SpatialCrop, AdaptiveTemporalCrop
+from FILS.data.classification_dataset import VideoClsDataset_FRIL, multiple_samples_collate
+from FILS.data.clip_dataset import VideoClassyDataset
+from FILS.data.kinetics_dataset import KineticsDataset
+import FILS.models.model_FRIL as model_FRIL
+from FILS.optim.layer_decay import LayerDecayValueAssigner
+from FILS.optim.lion import Lion
+from FILS.optim.schedulers import cosine_scheduler
+import FILS.utils.distributed as dist_utils
+from FILS.utils.meters import AverageMeter, ProgressMeter
+from FILS.utils.misc import check_loss_nan, interpolate_pos_embed, generate_label_map
+from FILS.utils.evaluation_ek100cls import get_marginal_indexes, get_mean_accuracy, marginalize
 
 
 def get_args_parser():
@@ -131,7 +131,7 @@ def get_args_parser():
     parser.add_argument('--drop-rate', default=0.0, type=float)
     parser.add_argument('--attn-drop-rate', default=0.0, type=float)
     parser.add_argument('--drop-path-rate', default=0.1, type=float)
-    parser.add_argument('--resume', default='/home/mona/FRIL/avion/results/EGTEA/Finetune_FR_CLIP_FRILS_800__decoder_head=6_all_EGTEA_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt', type=str, help='path to resume from')
+    parser.add_argument('--resume', default='/home/mona/FRIL/FILS/results/EGTEA/Finetune_FR_CLIP_FRILS_800__decoder_head=6_all_EGTEA_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt', type=str, help='path to resume from')
     # fine-tune
     parser.add_argument('--finetune', default='/mnt/welles/scratch/mona/FILS/finetune/Finetune_FR_CLIP_FRILS_SSV2pretraining_vidcaption_vifi_800_decoder_head=6_all_EGTEA_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt', help='fine-tune path')
     # parser.add_argument('--finetune', default='', help='fine-tune path')
@@ -1134,7 +1134,7 @@ def test(test_loader, model, args, num_videos, strategy='all'):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser('AVION training and evaluation', parents=[get_args_parser()])
+    parser = argparse.ArgumentParser('FILS training and evaluation', parents=[get_args_parser()])
     args = parser.parse_args()
     os.makedirs(args.output_dir, exist_ok=True)
     main(args)

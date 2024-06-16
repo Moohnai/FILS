@@ -12,10 +12,10 @@ import torch.utils.checkpoint as checkpoint
 import flash_attn
 from flash_attn.modules.mha import MHA as FlashMHA
 
-from avion.models.transformer import TextTransformer
-from avion.models.utils import enable_grad_checkpointing, remap_keys_from_open_clip_to_vit
-from avion.utils.misc import interpolate_pos_embed
-from avion.models.model_clip import CLIP
+from FILS.models.transformer import TextTransformer
+from FILS.models.utils import enable_grad_checkpointing, remap_keys_from_open_clip_to_vit
+from FILS.utils.misc import interpolate_pos_embed
+from FILS.models.model_clip import CLIP
 import clip
 
 torch_version = torch.__version__

@@ -34,11 +34,11 @@ parent_path = os.path.dirname(current_path)
 import sys
 sys.path.append(parent_path)
 
-from avion.data.classification_dataset import VideoClsDataset_FRIL
-from avion.data.transforms import Permute, TemporalCrop, SpatialCrop
-from avion.data.clip_dataset import VideoClassyDataset
-import avion.models.model_FRIL as model_FRIL
-from avion.utils.misc import generate_label_map
+from FILS.data.classification_dataset import VideoClsDataset_FRIL
+from FILS.data.transforms import Permute, TemporalCrop, SpatialCrop
+from FILS.data.clip_dataset import VideoClassyDataset
+import FILS.models.model_FRIL as model_FRIL
+from FILS.utils.misc import generate_label_map
 
 
 def get_args():
@@ -325,9 +325,9 @@ if __name__ == '__main__':
     ).to(device)
 
     # load weights
-    load_model(model_FR_CLIP, '/home/mona/FRIL/avion/results/EGTEA/Finetune_FR_CLIP_FRILS_800__decoder_head=6_all_EGTEA_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
-    # load_model(model_FR, '/home/mona/FRIL/avion/results/finetune_FRILS/Finetune_FR_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
-    # load_model(model_MSE, '/home/mona/FRIL/avion/results/finetune_FRILS/Finetune_MSE_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
+    load_model(model_FR_CLIP, '/home/mona/FRIL/FILS/results/EGTEA/Finetune_FR_CLIP_FRILS_800__decoder_head=6_all_EGTEA_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
+    # load_model(model_FR, '/home/mona/FRIL/FILS/results/finetune_FRILS/Finetune_FR_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
+    # load_model(model_MSE, '/home/mona/FRIL/FILS/results/finetune_FRILS/Finetune_MSE_FRILS_800__decoder_head=6_all_EK_100_epochs_totalbatch=256_lr=0.0015/checkpoint_best.pt')
     
     
     # set the models to evaluation mode

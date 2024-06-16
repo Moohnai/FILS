@@ -15,22 +15,22 @@ from torch.distributed.optim import ZeroRedundancyOptimizer
 import torchvision
 import torchvision.transforms._transforms_video as transforms_video
 from timm.data.loader import MultiEpochsDataLoader
-from avion.data.clip_dataset import VideoCaptionDatasetCLIP
-from avion.data.tokenizer import tokenize
-from avion.data.transforms import Permute
+from FILS.data.clip_dataset import VideoCaptionDatasetCLIP
+from FILS.data.tokenizer import tokenize
+from FILS.data.transforms import Permute
 
-from avion.losses.losses import MaxMarginRankingLoss
-import avion.models.model_clip as model_clip
-from avion.models.utils import inflate_positional_embeds
-from avion.optim.schedulers import cosine_scheduler
-import avion.utils.distributed as dist_utils
-from avion.utils.evaluation_ek100mir import get_mAP, get_nDCG
-from avion.utils.meters import AverageMeter, ProgressMeter
-from avion.utils.misc import check_loss_nan
+from FILS.losses.losses import MaxMarginRankingLoss
+import FILS.models.model_clip as model_clip
+from FILS.models.utils import inflate_positional_embeds
+from FILS.optim.schedulers import cosine_scheduler
+import FILS.utils.distributed as dist_utils
+from FILS.utils.evaluation_ek100mir import get_mAP, get_nDCG
+from FILS.utils.meters import AverageMeter, ProgressMeter
+from FILS.utils.misc import check_loss_nan
 
 
 def get_args_parser():
-    parser = argparse.ArgumentParser(description='AVION finetune ek100 mir', add_help=False)
+    parser = argparse.ArgumentParser(description='FILS finetune ek100 mir', add_help=False)
     parser.add_argument('--dataset', default='ek100_mir', type=str, choices=['ek100_mir'])
     parser.add_argument('--root', default='datasets/EK100/EK100_256p_15sec/', type=str, help='path to train dataset root')
     parser.add_argument('--train-metadata', type=str,

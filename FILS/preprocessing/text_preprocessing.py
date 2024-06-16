@@ -39,7 +39,7 @@ if __name__ == "__main__":
     # model, _ = clip.load("ViT-L/14", device=device)
     ######epic_kitchens
     # read csv file
-    csv_train_path = "/home/mona/FRIL/avion/datasets/EK100/epic-kitchens-100-annotations/EPIC_100_train.csv"
+    csv_train_path = "/home/mona/FRIL/FILS/datasets/EK100/epic-kitchens-100-annotations/EPIC_100_train.csv"
     # csv_val_path = "../../home/mona/SSVLI/dataset/epic_kitchens/EPIC_100_validation.csv"
 
 
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     #action
     csv_action_path_train = "../../../../home/mona/SSVLI/dataset/epic_kitchens/annotation/action/train.csv"
     # csv_action_path_val = "../../home/mona/SSVLI/dataset/epic_kitchens/annotation/action/val.csv"
-    generated_csv_path = "/home/mona/FRIL/avion/datasets/EK100/epic_captions_train.csv"
+    generated_csv_path = "/home/mona/FRIL/FILS/datasets/EK100/epic_captions_train.csv"
     df_generated = pd.read_csv(generated_csv_path, delimiter=',')
     df_generated['video'] = df_generated['video'].apply(lambda x: x.split('/')[-1].split('.')[0].split('_')[-1])
 
@@ -97,10 +97,10 @@ if __name__ == "__main__":
         encoded_image_cation_dict[id] = text_encoding_openclip(row['image_caption'].values[0])
         encoded_mixed_cation_dict[id] = text_encoding_openclip(row['mixed_caption'].values[0])
         
-    # torch.save(encoded_label_train_dict_epic, "/home/mona/FRIL/avion/datasets/EK100/O_epic_train_label_text_dict.pt")
-    torch.save(encoded_video_cation_dict, "/home/mona/FRIL/avion/datasets/EK100/O_epic_train_video_caption_text_dict.pt")
-    torch.save(encoded_image_cation_dict, "/home/mona/FRIL/avion/datasets/EK100/O_epic_train_image_caption_text_dict.pt")
-    torch.save(encoded_mixed_cation_dict, "/home/mona/FRIL/avion/datasets/EK100/O_epic_train_mixed_caption_text_dict.pt")
+    # torch.save(encoded_label_train_dict_epic, "/home/mona/FRIL/FILS/datasets/EK100/O_epic_train_label_text_dict.pt")
+    torch.save(encoded_video_cation_dict, "/home/mona/FRIL/FILS/datasets/EK100/O_epic_train_video_caption_text_dict.pt")
+    torch.save(encoded_image_cation_dict, "/home/mona/FRIL/FILS/datasets/EK100/O_epic_train_image_caption_text_dict.pt")
+    torch.save(encoded_mixed_cation_dict, "/home/mona/FRIL/FILS/datasets/EK100/O_epic_train_mixed_caption_text_dict.pt")
 
 
 

@@ -20,21 +20,21 @@ def dot_product(x,y):
 
 # train_lable_embed_path_epic = '../../home/mona/SSVLI/dataset/epic_kitchens/epic_train_label_text_dict.pt'
 
-train_org_label_embed_path_epic = '/home/mona/FRIL/avion/datasets/EK100/epic_train_label_text_dict.pt'
-# epic_train_image_caption_path = '../../home/mona/FRIL/avion/datasets/EK100/epic_train_image_caption_text_dict.pt'
-# epic_train_video_caption_path = '../../home/mona/FRIL/avion/datasets/EK100/epic_train_video_caption_text_dict.pt'
-# epic_train_mixed_caption_path = '../../home/mona/FRIL/avion/datasets/EK100/epic_train_mixed_caption_text_dict.pt'
-epic_train_image_caption_path = '/home/mona/FRIL/avion/datasets/EK100/vifi_epic_train_image_caption_text_dict.pt'
-epic_train_video_caption_path = '/home/mona/FRIL/avion/datasets/EK100/vifi_epic_train_video_caption_text_dict.pt'
-epic_train_mixed_caption_path = '/home/mona/FRIL/avion/datasets/EK100/vifi_epic_train_mixed_caption_text_dict.pt'
+train_org_label_embed_path_epic = '/home/mona/FRIL/FILS/datasets/EK100/epic_train_label_text_dict.pt'
+# epic_train_image_caption_path = '../../home/mona/FRIL/FILS/datasets/EK100/epic_train_image_caption_text_dict.pt'
+# epic_train_video_caption_path = '../../home/mona/FRIL/FILS/datasets/EK100/epic_train_video_caption_text_dict.pt'
+# epic_train_mixed_caption_path = '../../home/mona/FRIL/FILS/datasets/EK100/epic_train_mixed_caption_text_dict.pt'
+epic_train_image_caption_path = '/home/mona/FRIL/FILS/datasets/EK100/vifi_epic_train_image_caption_text_dict.pt'
+epic_train_video_caption_path = '/home/mona/FRIL/FILS/datasets/EK100/vifi_epic_train_video_caption_text_dict.pt'
+epic_train_mixed_caption_path = '/home/mona/FRIL/FILS/datasets/EK100/vifi_epic_train_mixed_caption_text_dict.pt'
 
 
 epic_train_lable_embed = torch.load(train_org_label_embed_path_epic)
 epic_train_image_caption_embed = torch.load(epic_train_image_caption_path)
 epic_train_video_caption_embed = torch.load(epic_train_video_caption_path)
 epic_train_mixed_caption_embed = torch.load(epic_train_mixed_caption_path)
-epic_csv_action_path_train = "/home/mona/FRIL/avion/datasets/EK100/epic-kitchens-100-annotations/EPIC_100_train.csv"
-generated_csv_path = "/home/mona/FRIL/avion/datasets/EK100/epic_captions_train.csv"
+epic_csv_action_path_train = "/home/mona/FRIL/FILS/datasets/EK100/epic-kitchens-100-annotations/EPIC_100_train.csv"
+generated_csv_path = "/home/mona/FRIL/FILS/datasets/EK100/epic_captions_train.csv"
 epic_label = pd.read_csv(epic_csv_action_path_train)
 # add another avtion column to epic_label
 epic_label['action'] = epic_label['verb'] + ' ' + epic_label['noun']

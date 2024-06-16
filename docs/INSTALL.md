@@ -4,7 +4,7 @@
 
 Clone the repo recursively. Note that it is important to add the `--recursive` option.
 ```bash
-git clone --recursive git@github.com:Moohnai/avion.git
+git clone --recursive git@github.com:Moohnai/FILS.git
 ```
 
 ## Requirements
@@ -46,26 +46,26 @@ First, add the python path to $PYTHONPATH with
 PYTHONPATH=$PYTHONPATH:$PWD
 ```
 
-Next, return to `<YOUR_AVION_HOME_PATH>` and run 
+Next, return to `<YOUR_FILS_HOME_PATH>` and run 
 ```bash
 python -c "import decord; print(decord.__path__)"
 ```
-It should print out the decord build path `['<YOUR_AVION_HOME_PATH>/third_party/decord/python/decord']`.
+It should print out the decord build path `['<YOUR_FILS_HOME_PATH>/third_party/decord/python/decord']`.
 
 
 ### Troubleshooting:
 
 * If you see an empty folder under `third_party/decord/` in step (1), it indicates that you did not clone the repo recursively. You can run `git submodule update --init --recursive` to fetch the submodule.
 
-* If you see ```OSError: <YOUR_CONDA_HOME_PATH>/envs/avion/bin/../lib/libstdc++.so.6: version `GLIBCXX_3.4.30' not found (required by <YOUR_AVION_HOME_PATH>/third_party/decord/build/libdecord.so)``` in step (3), it means that you have mismatched GLIBCXX versions between the ubuntu system and anaconda environment. As a workaround, you can simply copy the system libstdc++ to your anaconda libstdc++ and update the soft link, for example (the version number might vary due to your system) 
+* If you see ```OSError: <YOUR_CONDA_HOME_PATH>/envs/FILS/bin/../lib/libstdc++.so.6: version `GLIBCXX_3.4.30' not found (required by <YOUR_FILS_HOME_PATH>/third_party/decord/build/libdecord.so)``` in step (3), it means that you have mismatched GLIBCXX versions between the ubuntu system and anaconda environment. As a workaround, you can simply copy the system libstdc++ to your anaconda libstdc++ and update the soft link, for example (the version number might vary due to your system) 
 
 ```bash
-cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30 <YOUR_CONDA_HOME_PATH>/envs/avion/lib/
-rm  <YOUR_CONDA_HOME_PATH>/envs/avion/lib/libdecord.so
-ln -s <YOUR_CONDA_HOME_PATH>/envs/avion/lib/libdecord.so.6.0.30 <YOUR_CONDA_HOME_PATH>/envs/avion/lib/libdecord.so
+cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30 <YOUR_CONDA_HOME_PATH>/envs/FILS/lib/
+rm  <YOUR_CONDA_HOME_PATH>/envs/FILS/lib/libdecord.so
+ln -s <YOUR_CONDA_HOME_PATH>/envs/FILS/lib/libdecord.so.6.0.30 <YOUR_CONDA_HOME_PATH>/envs/FILS/lib/libdecord.so
 ```
 
-* If you see an incorrect path, e.g. `<YOUR_CONDA_HOME_PATH>/envs/avion/lib/python3.10/site-packages/decord`, it means that you are using a wrong decord which may have previously been installed using `pip install decord`. You can `pip uninstall decord` and re-install following the steps above.
+* If you see an incorrect path, e.g. `<YOUR_CONDA_HOME_PATH>/envs/FILS/lib/python3.10/site-packages/decord`, it means that you are using a wrong decord which may have previously been installed using `pip install decord`. You can `pip uninstall decord` and re-install following the steps above.
 ry due to 
 
 * If you see `/usr/lib/libstdc++.so.6: version 'GLIBCXX_3.4.15' not found` in step (3), it means that you have mismatched GLIBCXX versions between the ubuntu system and anaconda environment. As a workaround, you can simply copy the system libstdc++ to your anaconda libstdc++ and update the soft link, for example (the version number might vary due to your system). Or you can install the below package.

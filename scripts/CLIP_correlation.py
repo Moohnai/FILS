@@ -23,12 +23,12 @@ parent_path = os.path.dirname(current_path)
 import sys
 sys.path.append(parent_path)
 
-from avion.data.classification_dataset import VideoClsDataset_FRIL
-from avion.data.clip_dataset import VideoCaptionDatasetCLIP
-import avion.models.model_FRIL as model_FRIL
-from avion.utils.misc import generate_label_map
-from avion.data.clip_dataset import get_pretrain_dataset_FRIL
-from avion.data.transforms import  Permute_BB
+from FILS.data.classification_dataset import VideoClsDataset_FRIL
+from FILS.data.clip_dataset import VideoCaptionDatasetCLIP
+import FILS.models.model_FRIL as model_FRIL
+from FILS.utils.misc import generate_label_map
+from FILS.data.clip_dataset import get_pretrain_dataset_FRIL
+from FILS.data.transforms import  Permute_BB
 
 def spatial_mask_creator(mask_height=4, mask_width=4, height=224, width=224, num_frames=16, start_x=0, start_y=0):
     mask = torch.zeros(3, num_frames, height, width)
@@ -229,8 +229,8 @@ if __name__ == '__main__':
         use_fast_conv1=True,
         use_flash_attn=True,
         pretrain_zoo="frils",
-        pretrain_path='/home/mona/FRIL/avion/results/pretrain_FRILS/pretrain_CLIP_vidcaption_vifi_all_EK100_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=0__ssvli_iter=1_800_epochs_totalbatch=200_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00280.pt',
-        text_pretrain_path='/home/mona/FRIL/avion/results/vifi_clip_10_epochs_k400_full_finetuned.pth',
+        pretrain_path='/home/mona/FRIL/FILS/results/pretrain_FRILS/pretrain_CLIP_vidcaption_vifi_all_EK100_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=0__ssvli_iter=1_800_epochs_totalbatch=200_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00280.pt',
+        text_pretrain_path='/home/mona/FRIL/FILS/results/vifi_clip_10_epochs_k400_full_finetuned.pth',
     ).to(device)
     
     model_FR_CLIP = model = getattr(model_FRIL, args.model)(
@@ -242,8 +242,8 @@ if __name__ == '__main__':
         use_fast_conv1=True,
         use_flash_attn=True,
         pretrain_zoo="frils",
-        pretrain_path='/home/mona/FRIL/avion/results/pretrain_FRILS/pretrain_FR_CLIP_vidcaption_vifi_full_all_EK_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=1__ssvli_iter=1_800_epochs_totalbatch=240_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00800.pt',
-        text_pretrain_path='/home/mona/FRIL/avion/results/vifi_clip_10_epochs_k400_full_finetuned.pth',
+        pretrain_path='/home/mona/FRIL/FILS/results/pretrain_FRILS/pretrain_FR_CLIP_vidcaption_vifi_full_all_EK_decoder_head=6__MSE_scale=0__CLIP_scale=1__FR_scale=1__ssvli_iter=1_800_epochs_totalbatch=240_lr=0.00015_CLIP_strategy=patch-average/checkpoint_00800.pt',
+        text_pretrain_path='/home/mona/FRIL/FILS/results/vifi_clip_10_epochs_k400_full_finetuned.pth',
     ).to(device)
     
     # set the models to evaluation mode
@@ -251,7 +251,7 @@ if __name__ == '__main__':
     model_CLIP.eval()
 
     # load caption csv file
-    caption_csv = pd.read_csv('/home/mona/FRIL/avion/datasets/EK100/epic_captions_train.csv')
+    caption_csv = pd.read_csv('/home/mona/FRIL/FILS/datasets/EK100/epic_captions_train.csv')
     caption_csv['video'] = caption_csv['video'].apply(lambda x: x.split('/')[-1].split('.')[0].split('_')[-1])
 
     cutoff_threshold = 0.4 # 0.3

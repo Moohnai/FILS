@@ -7,7 +7,7 @@ import decord
 import torch
 from torchvision import tv_tensors
 
-from avion.data.transforms import TubeMaskingGenerator
+from FILS.data.transforms import TubeMaskingGenerator
 
 
 def read_metadata(metadata_fname, root=None, args=None, mode='train'):

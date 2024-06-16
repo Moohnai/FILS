@@ -27,19 +27,19 @@ parent_path = os.path.dirname(current_path)
 import sys
 sys.path.append(parent_path)
 
-from avion.data.clip_dataset import VideoCaptionDatasetCLIP, VideoClassyDataset
-from avion.data.tokenizer import tokenize
-from avion.data.transforms import Permute, Permute_BB
+from FILS.data.clip_dataset import VideoCaptionDatasetCLIP, VideoClassyDataset
+from FILS.data.tokenizer import tokenize
+from FILS.data.transforms import Permute, Permute_BB
 
-from avion.losses.losses import MaxMarginRankingLoss, ClipLoss
-import avion.models.model_clip as model_clip
-import avion.models.model_FRIL as model_FRIL
-from avion.models.utils import inflate_positional_embeds
-from avion.optim.schedulers import cosine_scheduler
-import avion.utils.distributed as dist_utils
-from avion.utils.evaluation_ek100mir import get_mAP, get_nDCG
-from avion.utils.meters import AverageMeter, ProgressMeter
-from avion.utils.misc import check_loss_nan, generate_label_map
+from FILS.losses.losses import MaxMarginRankingLoss, ClipLoss
+import FILS.models.model_clip as model_clip
+import FILS.models.model_FRIL as model_FRIL
+from FILS.models.utils import inflate_positional_embeds
+from FILS.optim.schedulers import cosine_scheduler
+import FILS.utils.distributed as dist_utils
+from FILS.utils.evaluation_ek100mir import get_mAP, get_nDCG
+from FILS.utils.meters import AverageMeter, ProgressMeter
+from FILS.utils.misc import check_loss_nan, generate_label_map
 
 def compute_map(submission_array, gt_array):
     """ Returns mAP, weighted mAP, and AP array """
@@ -79,7 +79,7 @@ def charades_map(submission_array, gt_array):
 
 
 def get_args_parser():
-    parser = argparse.ArgumentParser(description='AVION finetune ek100 mir', add_help=False)
+    parser = argparse.ArgumentParser(description='FILS finetune ek100 mir', add_help=False)
     parser.add_argument('--dataset', default='charades_ego', type=str, choices=['ek100_mir'])
     # parser.add_argument('--dataset', default='ek100_cls', type=str, choices=['ek100_mir'])
     parser.add_argument('--root', default=os.path.join(parent_path, 'datasets/CharadesEgo/CharadesEgo_v1_480'), type=str, help='path to train dataset root')

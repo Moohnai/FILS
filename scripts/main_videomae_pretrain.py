@@ -13,14 +13,14 @@ from torch.distributed.optim import ZeroRedundancyOptimizer
 import torchvision
 from timm.data.loader import MultiEpochsDataLoader
 
-from avion.data.kinetics_dataset import KineticsDataset
-from avion.data.transforms import GroupMultiScaleCrop, Permute, TubeMaskingGeneratorGPU
-import FRIL.avion.avion.models.model_FRIL as model_FRIL
-from avion.optim.lion import Lion
-from avion.optim.schedulers import cosine_scheduler
-import avion.utils.distributed as dist_utils
-from avion.utils.meters import AverageMeter, ProgressMeter
-from avion.utils.misc import check_loss_nan
+from FILS.data.kinetics_dataset import KineticsDataset
+from FILS.data.transforms import GroupMultiScaleCrop, Permute, TubeMaskingGeneratorGPU
+import FRIL.FILS.FILS.models.model_FRIL as model_FRIL
+from FILS.optim.lion import Lion
+from FILS.optim.schedulers import cosine_scheduler
+import FILS.utils.distributed as dist_utils
+from FILS.utils.meters import AverageMeter, ProgressMeter
+from FILS.utils.misc import check_loss_nan
 
 
 def get_args_parser():
@@ -376,7 +376,7 @@ def train(train_loader, normalize, model, criterion, optimizer, scaler, epoch, l
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser('AVION training and evaluation', parents=[get_args_parser()])
+    parser = argparse.ArgumentParser('FILS training and evaluation', parents=[get_args_parser()])
     args = parser.parse_args()
     os.makedirs(args.output_dir, exist_ok=True)
     main(args)

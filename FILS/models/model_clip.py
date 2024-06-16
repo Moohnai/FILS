@@ -5,8 +5,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from timm.models.layers import trunc_normal_
 
-from avion.models.transformer import TextTransformer, VisionTransformer
-from avion.models.utils import enable_grad_checkpointing, remap_keys_from_open_clip_to_vit
+from FILS.models.transformer import TextTransformer, VisionTransformer
+from FILS.models.utils import enable_grad_checkpointing, remap_keys_from_open_clip_to_vit
 
 
 class VideoClassifier(nn.Module):

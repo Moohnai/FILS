@@ -25,7 +25,7 @@ def parse_args():
 def get_shared_folder() -> Path:
     user = os.getenv("USER")
     if Path("/u/").is_dir():
-        p = Path(f"/u/{user}/experiments/avion_lavila")
+        p = Path(f"/u/{user}/experiments/FILS_lavila")
         p.mkdir(exist_ok=True)
         return p
     raise RuntimeError("No shared folder available")
@@ -106,7 +106,7 @@ def main():
         **kwargs
     )
 
-    executor.update_parameters(name="avion_lavila")
+    executor.update_parameters(name="FILS_lavila")
 
     args.dist_url = get_init_file().as_uri()
     args.output_dir = args.job_dir
